@@ -2,25 +2,12 @@ version: "2"
 
 services:
   node: 
-    container_name: node_
+    container_name: dockV
     build: .
-    image: legal_
+    restart: on-failure
     ports:
       - 3000:3000
     volumes:
       - .:/usr/src/app
-    environment: 
-      - MONGO_URL=mongodb://mongo:27017/
-    depends_on:
-      - mongo
-     
-    
   
-  mongo:
-    container_name: mongo_
-    image: mongo
-    volumes:
-    - ./data:/data/db
-    ports:
-      - 27017:27017
   

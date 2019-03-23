@@ -2,9 +2,11 @@ FROM node:alpine
 
 WORKDIR /usr/src/app
 
+RUN apk add --update --no-cache openssh sshpass
+
 COPY package.json package.json
 
-RUN apk add openssh
+RUN npm install -g nodemon
 
 RUN npm install
 
@@ -12,4 +14,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["./node_modules/nodemon/bin/nodemon.js","app"]
+CMD ["nodemon","app"]

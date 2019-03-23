@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const {setConnection} = require('../helpers/ssh');
-const fs =require('fs')
 router.post('/',(req,res,next)=>{
     
     setConnection()

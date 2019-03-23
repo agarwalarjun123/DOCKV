@@ -15,7 +15,6 @@
     "express": "^4.16.4",
     "mongoose": "^5.4.19",
     "morgan": "^1.9.1",
-    "node-pty": "^0.8.1",
     "nodemon": "^1.18.10",
     "socket.io": "^2.2.0",
     "xterm": "^3.12.0"

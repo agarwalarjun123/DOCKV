@@ -4,7 +4,7 @@ module.exports = (server)=>{
 
     io.on('connection',(socket)=>{
         socket.on('input',(data)=>{
-            exec(`sshpass -p '${process.env.password}' ssh ${process.env.name}@${process.env.IP} `+data,(err,stdout,stderr)=>{
+            exec(`sshpass -p '${process.env.password}' ssh ${process.env.name}@${process.env.IP} `+`docker images;`,(err,stdout,stderr)=>{
                 if(err) 
                     console.log(err);
                 socket.emit('output',stdout||stderr)

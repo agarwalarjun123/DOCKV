@@ -4,6 +4,8 @@ WORKDIR /usr/src/app
 
 COPY package.json package.json
 
+RUN apk add openssh
+
 RUN npm install
 
 COPY . . 

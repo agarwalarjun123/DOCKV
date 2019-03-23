@@ -7,8 +7,8 @@ router.post('/',(req,res,next)=>{
         name:"root",
         ip:"68.183.90.232"
     })
-    .then(console.log)
-    .catch(console.log)
+    .then(e=>res.send(e))
+    .catch(err=>next(new Error(err)))
 })
 
 

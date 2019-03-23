@@ -15,8 +15,9 @@ app.use(cors());
 app.use(bp.urlencoded({extended:false}));
 
 // connect to mongoDB
+app.use('/',require('./routes/docker'))
 app.use('/sshclient',require('./routes/sshclient'))
-    
+
 app.use((err,req,res,next)=>{
     console.error(err);
     res.send({err:err.message});

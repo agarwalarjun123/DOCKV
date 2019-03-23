@@ -4,9 +4,9 @@ const fs =require('fs')
 router.post('/',(req,res,next)=>{
     
     setConnection({
-        name:"root",
-        ip:"68.183.90.232",
-        password:"Arjun@1234"
+        name:req.body.name,
+        ip:req.body.ip,
+        password:req.password
     })
     .then(e=>res.send(e))
     .catch(err=>next(new Error(err)))

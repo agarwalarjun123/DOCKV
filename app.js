@@ -4,7 +4,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors= require('cors');
-const io = require('socket.io');
+const socket = require('./helpers/web_ssh') 
 // for verbose logging
 app.use(require("morgan")("dev"));
 
@@ -25,5 +25,6 @@ app.use((err,req,res,next)=>{
 
 const server = app.listen(process.env.PORT || 3000, ()=>console.log("Listening..."));
 
+socket(server)
 
 module.exports=app

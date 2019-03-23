@@ -1,11 +1,12 @@
 const {exec} = require('child_process')
-const fs = require('fs') 
 const setConnection = (user)=>{
     return new Promise((resolve,reject)=>{
-            exec(`sshpass -p '${user.password}' ssh ${user.name}@${user.ip} './init.sh'`,(err,stdout,stderr)=>{
+            exec(`sshpass -p '${process.env.password}' ssh ${process.env.name}@${process.env.IP} './init.sh'`,(err,stdout,stderr)=>{
                 if(err)
-                    console.log(err)
+                    reject(err)
                 console.log(stdout)
+                resolve(stdout)
+
                 
             })
             

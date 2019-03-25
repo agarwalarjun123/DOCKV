@@ -1,16 +1,20 @@
-const {exec} = require('child_process')
+const {spawn} = require('child_process')
 module.exports = (server)=>{
     const io = require('socket.io')(server)
-
+    
     io.on('connection',(socket)=>{
-        socket.on('input',(data)=>{
-            exec(`sshpass -p '${process.env.password}' ssh ${process.env.name}@${process.env.IP} `+`docker images;`,(err,stdout,stderr)=>{
-                if(err) 
-                    console.log(err);
-                socket.emit('output',stdout||stderr)
-            })
-        })
+        let child = spawn('sudo',['docker','stats',`845`])
+        child.stdout.on('data',(data)=>{
+            
+            if(data.toString().split('\n')[1]){
+                data = data.toString().split('\n')[1].split(' ')
+                data = data.filter(d => d)
+                socket.emit('data',data)
+            }
 
+        })
+        child.stderr.on('data',(data)=>console.log(data.toString()))
+        
     })
 }
 
